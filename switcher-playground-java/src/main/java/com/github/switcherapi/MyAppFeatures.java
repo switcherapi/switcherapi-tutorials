@@ -1,7 +1,7 @@
 package com.github.switcherapi;
 
+import com.github.switcherapi.client.SwitcherContext;
 import com.github.switcherapi.client.configuration.SwitcherKey;
-import com.github.switcherapi.client.configuration.SwitcherContext;
 
 public class MyAppFeatures extends SwitcherContext {
 	

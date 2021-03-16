@@ -45,11 +45,13 @@ const environment = 'default';
 const component = 'switcher-playground';
 const url = 'https://switcher-load-balance.herokuapp.com';
 const apiKey = '$2b$08$Hm77RoqpXb.1f7izs06uKendX.B1jjWqTZsfJAzYnFoRzJpEFQXEi';
-Switcher.buildContext({ apiKey, component, domain, url, environment });
+Switcher.buildContext({ apiKey, component, domain, url, environment }, { offline: true });
+Switcher.loadSnapshot();
 
-// after building the context, you can initialize switcher using Switcher.factory() from any file.
 const switcher = Switcher.factory();
-
 switcher.isItOn('MY_SWITCHER').then(result => {
     console.log(result);
+    process.exit();
+}, (e) => {
+    console.log(e);
 });
