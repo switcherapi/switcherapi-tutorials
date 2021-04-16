@@ -1,6 +1,6 @@
 package com.github.switcherapi;
 
-import static com.github.switcherapi.MyAppFeatures.MY_SWITCHER;
+import static com.github.switcherapi.PlaygroundFeatures.MY_SWITCHER;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -13,13 +13,13 @@ import com.github.switcherapi.client.configuration.SwitcherMock;
 import com.github.switcherapi.client.exception.SwitcherException;
 import com.github.switcherapi.client.factory.SwitcherExecutor;
 
-class PlaygroundTest {
+class AppPlaygroundTest {
 	
-	private Playground playground;
+	private AppPlayground playground;
 	
 	@BeforeEach
 	void setUp() {
-		playground = new Playground();
+		playground = new AppPlayground();
 	}
 	
 	@ParameterizedTest
@@ -44,7 +44,7 @@ class PlaygroundTest {
 	@Test
 	void testSwitchers() {
 		assertThrows(SwitcherException.class, 
-				() -> MyAppFeatures.checkSwitchers());
+				() -> PlaygroundFeatures.checkSwitchers());
 	}
 
 }

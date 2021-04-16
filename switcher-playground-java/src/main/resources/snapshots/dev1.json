@@ -1,0 +1,39 @@
+{
+  "data": {
+    "domain": {
+      "name": "Playground",
+      "version": 1618553503034,
+      "group": [
+        {
+          "name": "Release 1",
+          "config": [
+            {
+              "key": "MY_SWITCHER",
+              "strategies": [
+                {
+                  "strategy": "VALUE_VALIDATION",
+                  "operation": "EXIST",
+                  "values": [
+                    "user_1",
+                    "user_2",
+                    "user_3"
+                  ],
+                  "activated": true
+                }
+              ],
+              "components": [
+                "switcher-playground"
+              ],
+              "description": "My first switcher",
+              "activated": true
+            }
+          ],
+          "description": "Showcase configuration structure",
+          "activated": true
+        }
+      ],
+      "description": "My playground",
+      "activated": true
+    }
+  }
+}
