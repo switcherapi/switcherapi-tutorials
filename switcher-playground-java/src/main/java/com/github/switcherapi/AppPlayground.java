@@ -7,7 +7,7 @@ import com.github.switcherapi.client.model.Switcher;
 public class AppPlayground {
 
 	public static void main(String[] args) {
-		new AppPlayground().myFeatureParams();
+		System.out.println(new AppPlayground().myFeatureParams());
 	}
 	
 	public boolean myFeature() {
