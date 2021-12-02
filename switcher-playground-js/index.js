@@ -47,15 +47,10 @@ Switcher.buildContext({ apiKey, component, domain }, { offline: false });
 Switcher.loadSnapshot();
 
 const switcher = Switcher.factory();
-switcher.throttle(4000);
 
 async function run(exit = false) {
     switcher.prepare('MY_SWITCHER', [checkValue('user_1')]);
-
-    for (let index = 0; index < 100; index++) {
-        console.log(await switcher.isItOn());
-    }
-
+    console.log(await switcher.isItOn());
     process.exit();
 }
 
