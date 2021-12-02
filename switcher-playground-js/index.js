@@ -38,20 +38,25 @@ That's it! Now, let's move to the code part:
     4. Call your Switcher using the following: Switcher.factory().isItOn('[MY_SWITCHER]')
 */
 
-const Switcher = require('switcher-client');
+const { Switcher, checkValue } = require('switcher-client');
 
 const domain = 'Playground';
-const environment = 'default';
 const component = 'switcher-playground';
-const url = 'https://switcher-load-balance.herokuapp.com';
 const apiKey = '$2b$08$Hm77RoqpXb.1f7izs06uKendX.B1jjWqTZsfJAzYnFoRzJpEFQXEi';
-Switcher.buildContext({ apiKey, component, domain, url, environment }, { offline: true });
+Switcher.buildContext({ apiKey, component, domain }, { offline: false });
 Switcher.loadSnapshot();
 
 const switcher = Switcher.factory();
-switcher.isItOn('MY_SWITCHER').then(result => {
-    console.log(result);
+switcher.throttle(4000);
+
+async function run(exit = false) {
+    switcher.prepare('MY_SWITCHER', [checkValue('user_1')]);
+
+    for (let index = 0; index < 100; index++) {
+        console.log(await switcher.isItOn());
+    }
+
     process.exit();
-}, (e) => {
-    console.log(e);
-});
+}
+
+run();
