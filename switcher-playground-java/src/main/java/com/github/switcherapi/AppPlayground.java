@@ -7,7 +7,7 @@ import com.github.switcherapi.client.model.Switcher;
 public class AppPlayground {
 
 	public static void main(String[] args) {
-		System.out.println(new AppPlayground().myFeatureParams());
+		System.out.println(new AppPlayground().myFeatureParams("user_1"));
 	}
 	
 	public boolean myFeature() {
@@ -15,10 +15,11 @@ public class AppPlayground {
 		return switcher.isItOn();
 	}
 	
-	public boolean myFeatureParams() {
+	public boolean myFeatureParams(String value) {
 		return PlaygroundFeatures
 				.getSwitcher(MY_SWITCHER)
-				.checkValue("user_1")
+				.checkValue(value)
+				.throttle(1000)
 				.isItOn();
 	}
 
