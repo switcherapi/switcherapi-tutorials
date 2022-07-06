@@ -28,30 +28,26 @@ That's it! Now, let's move to the code part:
     1. run the following: npm install switcher-client
         * It will import our super lightweight library to your project
 
-    2. Import the library on your project's startup procedure section.
-        * Like we do when importing Express or Mongoose, just do the same with Switcher.
+    2. Configure the context
+        * You can define a single JS to initialize the client and export Switcher functions.
 
-    3. Configure the context
-        * Context is all necessary arguments such as API URL, Domain and Component name
-        * and of course the API Key. Make sure to not expose it.
-    
-    4. Call your Switcher using the following: Switcher.factory().isItOn('[MY_SWITCHER]')
+    3. Check out the documentation for more details about all available features.
 */
 
 const { Switcher, checkValue } = require('switcher-client');
 
+const apiKey = 'JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT';
 const domain = 'Playground';
 const component = 'switcher-playground';
-const apiKey = '$2b$08$Hm77RoqpXb.1f7izs06uKendX.B1jjWqTZsfJAzYnFoRzJpEFQXEi';
-Switcher.buildContext({ apiKey, component, domain }, { offline: false });
+
+Switcher.buildContext({ apiKey, component, domain }, { logger: true });
 Switcher.loadSnapshot();
 
 const switcher = Switcher.factory();
 
-async function run(exit = false) {
-    switcher.prepare('MY_SWITCHER', [checkValue('user_1')]);
-    console.log(await switcher.isItOn());
-    process.exit();
+async function run(_exit = false) {
+    await switcher.isItOn('MY_SWITCHER', [checkValue('user_2')]);
+    console.log(JSON.stringify(Switcher.getLogger('MY_SWITCHER'), null, 4));
 }
 
 run();
