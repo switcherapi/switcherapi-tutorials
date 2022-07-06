@@ -1,7 +1,7 @@
 package com.github.switcherapi;
 
 import com.github.switcherapi.client.SwitcherContext;
-import com.github.switcherapi.client.configuration.SwitcherKey;
+import com.github.switcherapi.client.SwitcherKey;
 
 public class PlaygroundFeatures extends SwitcherContext {
 	
@@ -9,6 +9,6 @@ public class PlaygroundFeatures extends SwitcherContext {
 	public static final String MY_SWITCHER = "MY_SWITCHER";
 	
 	@SwitcherKey
-	public static final String NON_CONFIGURED = "NON_CONFIGURED";
+	public static final String NOT_CONFIGURED = "NOT_CONFIGURED";
 	
 }

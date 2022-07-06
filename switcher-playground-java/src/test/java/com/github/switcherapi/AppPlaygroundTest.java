@@ -9,9 +9,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 
-import com.github.switcherapi.client.configuration.SwitcherMock;
+import com.github.switcherapi.client.SwitcherExecutor;
+import com.github.switcherapi.client.SwitcherMock;
 import com.github.switcherapi.client.exception.SwitcherException;
-import com.github.switcherapi.client.factory.SwitcherExecutor;
+import com.github.switcherapi.examples.AppPlayground;
 
 class AppPlaygroundTest {
 	
