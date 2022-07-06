@@ -1,0 +1,16 @@
+server:
+   port: 8070
+   
+switcher:
+   apikey: JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT
+   component: switcher-playground
+   domain: Playground
+
+   # optional
+   offline: ${OFFLINE:true}
+   snapshot:
+      file: 
+      location: ./src/main/resources/snapshots/
+      auto: ${SNAPSHOT_AUTO:true}
+   silent: 
+   retry: 
