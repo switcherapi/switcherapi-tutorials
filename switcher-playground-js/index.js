@@ -36,11 +36,12 @@ That's it! Now, let's move to the code part:
 
 const { Switcher, checkValue } = require('switcher-client');
 
+const url = 'https://switcherapi.com/api';
 const apiKey = 'JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT';
 const domain = 'Playground';
 const component = 'switcher-playground';
 
-Switcher.buildContext({ apiKey, component, domain }, { logger: true });
+Switcher.buildContext({ url, apiKey, component, domain }, { logger: true, offline: true });
 Switcher.loadSnapshot();
 
 const switcher = Switcher.factory();
