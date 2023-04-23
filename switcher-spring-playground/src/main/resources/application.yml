@@ -1,7 +1,13 @@
 server:
    port: 8070
-   
+
+logging:
+   level:
+      com.github.switcherapi.client: DEBUG
+      org.springframework.web: INFO
+
 switcher:
+   url: https://switcherapi.com/api
    apikey: JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT
    component: switcher-playground
    domain: Playground
@@ -12,5 +18,6 @@ switcher:
       file: 
       location: ./src/main/resources/snapshots/
       auto: ${SNAPSHOT_AUTO:true}
+      updateinterval: 5s
    silent: 
    retry: 

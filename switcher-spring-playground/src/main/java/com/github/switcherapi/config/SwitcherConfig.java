@@ -14,7 +14,8 @@ import lombok.Data;
 @ConfigurationProperties(prefix = "switcher")
 @Data
 public class SwitcherConfig {
-	
+
+	private String url;
 	private String apikey;
 	private String domain;
 	private String component;
@@ -25,17 +26,20 @@ public class SwitcherConfig {
 	static class SnapshotConfig {
 		private String location;
 		private Boolean auto;
+		private String updateinterval;
 	}
 	
 	@Bean
 	public void configureSwitcher() {
 		configure(ContextBuilder.builder()
 				.contextLocation(Features.class.getName())
+				.url(url)
 				.apiKey(apikey)
 				.domain(domain)
 				.component(component)
 				.offlineMode(offline)
 				.snapshotLocation(snapshot.getLocation())
+				.snapshotAutoUpdateInterval(snapshot.getUpdateinterval())
 				.snapshotAutoLoad(snapshot.getAuto()));
 		
 		initializeClient();
