@@ -2,7 +2,7 @@
   "data": {
     "domain": {
       "name": "Playground",
-      "version": 1653971338700,
+      "version": 1677043375160,
       "group": [
         {
           "name": "Release 1",
@@ -26,6 +26,15 @@
               ],
               "description": "My first switcher",
               "activated": true
+            },
+            {
+              "key": "MY_SWITCHER2",
+              "strategies": [],
+              "components": [
+                "switcher-playground"
+              ],
+              "description": "",
+              "activated": false
             }
           ],
           "description": "Showcase configuration structure",
