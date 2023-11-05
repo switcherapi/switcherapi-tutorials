@@ -20,7 +20,7 @@ import com.github.switcherapi.config.Features;
 class SpringPlaygroundApplicationTests {
 
 	@Autowired
-	private MockMvc mockMvc;
+	MockMvc mockMvc;
 	
 	@ParameterizedTest
 	@SwitcherMock(key = Features.MY_SWITCHER, result = false)

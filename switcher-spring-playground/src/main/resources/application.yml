@@ -15,7 +15,6 @@ switcher:
    # optional
    offline: ${OFFLINE:true}
    snapshot:
-      file: 
       location: ./src/main/resources/snapshots/
       auto: ${SNAPSHOT_AUTO:true}
       updateinterval: 5s

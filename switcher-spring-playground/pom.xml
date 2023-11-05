@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.11</version>
+		<version>3.1.5</version>
 		<relativePath/>
 	</parent>
 	
@@ -16,8 +16,8 @@
 	<name>Switcher Spring Playground Java SDK</name>
 	
 	<properties>
-		<java.version>11</java.version>
-		<switcher-client.version>1.4.0</switcher-client.version>
+		<java.version>17</java.version>
+		<switcher-client.version>2.0.5</switcher-client.version>
 	</properties>
 	
 	<dependencies>
