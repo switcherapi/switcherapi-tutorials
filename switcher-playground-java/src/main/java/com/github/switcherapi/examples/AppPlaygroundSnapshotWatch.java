@@ -3,6 +3,9 @@ package com.github.switcherapi.examples;
 import static com.github.switcherapi.PlaygroundBaseFeatures.*;
 
 import java.nio.file.Paths;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -13,16 +16,23 @@ import com.github.switcherapi.client.ContextBuilder;
 import com.github.switcherapi.client.exception.SwitcherException;
 import com.github.switcherapi.client.utils.SnapshotEventHandler;
 
+/**
+ * This example shows how Watch Snapshot feature works.
+ *
+ * Snapshot Watcher will automatically reload the state of the switcher when the snapshot file is modified.
+ * This feature is helpful when you want to change the state of a switcher without restarting the application.
+ */
 public class AppPlaygroundSnapshotWatch {
 	
 	private static final Logger logger = LogManager.getLogger(AppPlaygroundSnapshotWatch.class);
+
+	private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 	
 	private static final String SNAPSHOTS_LOCAL = Paths
 			.get(StringUtils.EMPTY)
-			.toAbsolutePath()
-			.toString() + "/src/main/resources/snapshots";
+			.toAbsolutePath() + "/src/main/resources/snapshots";
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		configure(ContextBuilder.builder()
 				.contextLocation(PlaygroundBaseFeatures.class.getName())
 				.snapshotLocation(SNAPSHOTS_LOCAL)
@@ -40,14 +50,8 @@ public class AppPlaygroundSnapshotWatch {
 				logger.info("SUCCESS");
 			}
 		});
-		
-		for (int i = 0; i < 5; i++) {
-			getSwitcher(MY_SWITCHER).isItOn();
-			Thread.sleep(5000);
-			// In the meantime, try change /snapshots/default.json
-		}
-		
-		stopWatchingSnapshot();
+
+		scheduler.scheduleAtFixedRate(() -> getSwitcher(MY_SWITCHER).isItOn(), 0, 5, TimeUnit.SECONDS);
 	}
 
 }
