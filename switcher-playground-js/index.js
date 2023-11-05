@@ -4,7 +4,7 @@ Firstly, you will be configuring the API using the Switcher Management,
 importing the SDK to your application and finally implementing the call.
 
 -> Setup your Domain and your Switcher.
-    1. Access your account at https://switcherapi.github.io/switcher-management/
+    1. Access your account at https://cloud.switcherapi.com
 
     2. Create your first Domain.
         * Domain is something similar to a GitHub Organization where you maintain all your projects.
@@ -16,7 +16,7 @@ importing the SDK to your application and finally implementing the call.
         * Switcher is the main element that defines if the result is going to be A or B.
 
     5. Create a Component.
-        * Components are literally applications. Each app needs to assign an API Key.
+        * Components are literally applications. Each app will use an unique API Key.
         * After creating a component, you will be given an API Key. Save it a secure place.
 
     6. Return to the Switcher page you've just created. 
@@ -36,17 +36,24 @@ That's it! Now, let's move to the code part:
 
 const { Switcher, checkValue } = require('switcher-client');
 
-const url = 'https://switcherapi.com/api';
-const apiKey = 'JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT';
-const domain = 'Playground';
-const component = 'switcher-playground';
+const context = {
+    url: 'https://switcherapi.com/api',
+    apiKey: 'JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT',
+    domain: 'Playground',
+    component: 'switcher-playground',
+};
 
-Switcher.buildContext({ url, apiKey, component, domain }, { logger: true, offline: true });
-Switcher.loadSnapshot();
+const options = {
+    logger: true,
+    offline: true,
+    snapshotLocation: './snapshot',
+};
 
-const switcher = Switcher.factory();
+Switcher.buildContext(context, options);
+Switcher.loadSnapshot().then(() => console.log('Snapshot loaded!'));
 
 async function run(_exit = false) {
+    const switcher = Switcher.factory();
     await switcher.isItOn('MY_SWITCHER', [checkValue('user_2')]);
     console.log(JSON.stringify(Switcher.getLogger('MY_SWITCHER'), null, 4));
 }
