@@ -1,9 +1,8 @@
-/*
 This tutorial shows the minimum necessary to set up your first Switcher.
 Firstly, you will be configuring the API using the Switcher Management, 
 importing the SDK to your application and finally implementing the call.
 
--> Setup your Domain and your Switcher.
+### Setup your Domain and your Switcher.
     1. Access your account at https://cloud.switcherapi.com
 
     2. Create your first Domain.
@@ -24,38 +23,11 @@ importing the SDK to your application and finally implementing the call.
         * This step will assure that only your application can use this Switcher.
 
 That's it! Now, let's move to the code part:
--> Import the switcher-client SDK to your project.
+### Import the switcher-client SDK to your project.
     1. run the following: npm install switcher-client
-        * It will import our super lightweight library to your project
+        * It will import the SDK to your project
 
     2. Configure the context
         * You can define a single JS to initialize the client and export Switcher functions.
 
     3. Check out the documentation for more details about all available features.
-*/
-
-const { Switcher, checkValue } = require('switcher-client');
-
-const context = {
-    url: 'https://switcherapi.com/api',
-    apiKey: 'JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT',
-    domain: 'Playground',
-    component: 'switcher-playground',
-};
-
-const options = {
-    logger: true,
-    offline: true,
-    snapshotLocation: './snapshot',
-};
-
-Switcher.buildContext(context, options);
-Switcher.loadSnapshot().then(() => console.log('Snapshot loaded!'));
-
-async function run(_exit = false) {
-    const switcher = Switcher.factory();
-    await switcher.isItOn('MY_SWITCHER', [checkValue('user_2')]);
-    console.log(JSON.stringify(Switcher.getLogger('MY_SWITCHER'), null, 4));
-}
-
-run();

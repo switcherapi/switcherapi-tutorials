@@ -4,11 +4,12 @@
   "description": "Switcher Playerground is an app sample to test Switcher API and Switcher Client",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "commonjs": "node src/commonjs/index.js",
+    "es6": "node src/es6/index.mjs"
   },
   "author": "Roger Floriano (petruki)",
   "license": "MIT",
   "dependencies": {
-    "switcher-client": "3.2.0"
+    "switcher-client": "3.2.1"
   }
 }
