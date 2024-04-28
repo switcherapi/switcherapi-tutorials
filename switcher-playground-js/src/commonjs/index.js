@@ -24,8 +24,8 @@ async function run() {
     const { Switcher, checkValue } = await loadModule();
     
     const switcher = Switcher.factory();
-    await switcher.isItOn('MY_SWITCHER', [checkValue('user_2')]);
-    console.log(JSON.stringify(Switcher.getLogger('MY_SWITCHER'), null, 4));
+    const response = await switcher.detail().isItOn('MY_SWITCHER', [checkValue('user_2')]);
+    console.log(response);
 }
 
 setupSdk();
