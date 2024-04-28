@@ -9,7 +9,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * This code snippet is a all-in-one example of how to use the Switcher API.
+ * This code snippet is an all-in-one example of how to use the Switcher API.
  */
 public class AppSwitcherAPIPlayground extends SwitcherContextBase {
 
@@ -21,7 +21,7 @@ public class AppSwitcherAPIPlayground extends SwitcherContextBase {
     public static void main(String[] args) {
         configure(ContextBuilder.builder()
                 .contextLocation(AppSwitcherAPIPlayground.class.getName())
-                .url("https://switcherapi.com/api")
+                .url("https://api.switcherapi.com")
                 .domain("Playground")
                 .component("switcher-playground")
                 .apiKey("JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT")

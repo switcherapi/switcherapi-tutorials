@@ -1,18 +1,14 @@
 package com.github.switcherapi;
 
-import static com.github.switcherapi.PlaygroundFeatures.MY_SWITCHER;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import com.github.switcherapi.client.SwitcherExecutor;
+import com.github.switcherapi.client.exception.SwitcherException;
+import com.github.switcherapi.client.test.SwitcherTest;
+import com.github.switcherapi.examples.AppPlayground;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 
-import com.github.switcherapi.client.SwitcherExecutor;
-import com.github.switcherapi.client.SwitcherMock;
-import com.github.switcherapi.client.exception.SwitcherException;
-import com.github.switcherapi.examples.AppPlayground;
+import static com.github.switcherapi.PlaygroundFeatures.MY_SWITCHER;
+import static org.junit.jupiter.api.Assertions.*;
 
 class AppPlaygroundTest {
 	
@@ -22,9 +18,8 @@ class AppPlaygroundTest {
 	void setUp() {
 		playground = new AppPlayground();
 	}
-	
-	@ParameterizedTest
-	@SwitcherMock(key = MY_SWITCHER, result = true)
+
+	@SwitcherTest(key = MY_SWITCHER)
 	void testMyFeatureUsingParameter() {
 		assertTrue(playground.myFeature());
 	}
@@ -44,8 +39,12 @@ class AppPlaygroundTest {
 	
 	@Test
 	void testSwitchers() {
-		assertThrows(SwitcherException.class, 
-				() -> PlaygroundFeatures.checkSwitchers());
+		assertThrows(SwitcherException.class, PlaygroundFeatures::checkSwitchers);
+	}
+
+	@SwitcherTest(key = MY_SWITCHER, abTest = true)
+	void testAbSwitchers() {
+		assertEquals("value1 - value2", playground.concatString("value1", "value2"));
 	}
 
 }

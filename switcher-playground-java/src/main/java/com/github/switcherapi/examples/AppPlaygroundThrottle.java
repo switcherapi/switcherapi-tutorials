@@ -7,7 +7,7 @@ import com.github.switcherapi.client.model.Switcher;
 
 /**
  * This example shows how to use the throttle feature.
- *
+ * <p>
  * Throttling is a feature that allows you to limit the number of times a switcher is fetched from a remote server.
  * This can dramatically improve performance for critical code paths, especially if the remote server is slow or unreachable.
  */
