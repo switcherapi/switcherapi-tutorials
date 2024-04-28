@@ -1,14 +1,12 @@
 package com.github.switcherapi.config;
 
-import static com.github.switcherapi.client.SwitcherContextBase.*;
-
+import com.github.switcherapi.client.ContextBuilder;
+import jakarta.annotation.PostConstruct;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.github.switcherapi.client.ContextBuilder;
-
-import lombok.Data;
+import static com.github.switcherapi.client.SwitcherContextBase.*;
 
 @Configuration
 @ConfigurationProperties(prefix = "switcher")
@@ -19,17 +17,17 @@ class SwitcherConfiguration {
 	private String apikey;
 	private String domain;
 	private String component;
-	private Boolean offline;
+	private Boolean local;
 	private SnapshotConfig snapshot;
 	
 	@Data
 	static class SnapshotConfig {
 		private String location;
 		private Boolean auto;
-		private String updateinterval;
+		private String updateInterval;
 	}
 
-	@Bean
+	@PostConstruct
 	public void configureSwitcher() {
 		configure(ContextBuilder.builder()
 				.contextLocation(Features.class.getName())
@@ -37,9 +35,9 @@ class SwitcherConfiguration {
 				.apiKey(apikey)
 				.domain(domain)
 				.component(component)
-				.offlineMode(offline)
+				.local(local)
 				.snapshotLocation(snapshot.getLocation())
-				.snapshotAutoUpdateInterval(snapshot.getUpdateinterval())
+				.snapshotAutoUpdateInterval(snapshot.getUpdateInterval())
 				.snapshotAutoLoad(snapshot.getAuto()));
 
 		initializeClient();

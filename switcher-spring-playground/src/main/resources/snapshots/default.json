@@ -2,7 +2,7 @@
   "data": {
     "domain": {
       "name": "Playground",
-      "version": 1682219326294,
+      "version": 1714068301688,
       "group": [
         {
           "name": "Release 1",
@@ -16,7 +16,7 @@
                   "values": [
                     "user_1"
                   ],
-                  "activated": true
+                  "activated": false
                 }
               ],
               "components": [
@@ -32,10 +32,27 @@
                 "switcher-playground"
               ],
               "description": "",
+              "activated": false
+            }
+          ],
+          "description": "Showcase configuration structure 6",
+          "activated": true
+        },
+        {
+          "name": "Integration V2",
+          "config": [
+            {
+              "key": "JAMMY_V2",
+              "strategies": [],
+              "components": [
+                "switcher-playground",
+                "benchmark"
+              ],
+              "description": "Test 1",
               "activated": true
             }
           ],
-          "description": "Showcase configuration structure",
+          "description": "Migrating downstream components to utilize new integration bus",
           "activated": true
         }
       ],
