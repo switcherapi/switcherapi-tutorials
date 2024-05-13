@@ -32,3 +32,9 @@ It also includes samples of how to use AB test using the `@SwitcherTest` annotat
 This project shows how to use the Switcher JavaScript SDK to integrate feature flags into your JavaScript application.
 
 Learn how to set up the JS SDK withing a CommonJS or ES6 module type project.
+
+## switcher-playground-bun
+
+This project shows how to use the Switcher JavaScript SDK with the Bun.
+
+It requires to disable regexSafe flag when setting up the SDK.

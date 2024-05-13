@@ -1,0 +1,17 @@
+{
+  "name": "switcher-playground-bun",
+  "module": "index.ts",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "play": "bun run index.ts"
+  },
+  "type": "module",
+  "dependencies": {
+    "switcher-client": "^4.1.0"
+  }
+}
