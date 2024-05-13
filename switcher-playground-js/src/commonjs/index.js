@@ -1,31 +1,36 @@
 const loadModule = require('./switcher-client-async.js');
 
 async function setupSdk() {
-    const { Switcher } = await loadModule();
+    const { Client } = await loadModule();
 
-    const context = {
+    Client.buildContext({
         url: 'https://api.switcherapi.com',
         apiKey: 'JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT',
         domain: 'Playground',
-        component: 'switcher-playground',
-    };
-    
-    const options = {
+        component: 'switcher-playground'
+    }, {
         logger: true,
-        offline: true,
-        snapshotLocation: './snapshot',
-    };
+        local: false,
+        snapshotLocation: './snapshot'
+    });
 
-    Switcher.buildContext(context, options);
-    Switcher.loadSnapshot().then(() => console.log('Snapshot loaded!'));
+    Client.loadSnapshot().then(() => console.log('Snapshot loaded!'));
+    Client.subscribeNotifyError((error) => console.error('NotifyError:', error));
+    Client.watchSnapshot({
+        success: (snapshot) => console.log('Snapshot updated:', snapshot),
+    });
 }
 
 async function run() {
-    const { Switcher, checkValue } = await loadModule();
+    const { Client } = await loadModule();
     
-    const switcher = Switcher.factory();
-    const response = await switcher.detail().isItOn('MY_SWITCHER', [checkValue('user_2')]);
-    console.log(response);
+    const switcher = Client.getSwitcher();
+    
+    setInterval(async () => {
+        const time = Date.now();
+        const result = await switcher.detail().isItOn('MY_SWITCHER');
+        console.log(`- ${Date.now() - time} ms - ${JSON.stringify(result)}`);
+    }, 1000);
 }
 
 setupSdk();
