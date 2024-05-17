@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "play": "deno run --watch -A main.ts",
+    "test": "deno test --allow-read --allow-net --allow-env",
+    "fmt": "deno fmt --options-single-quote --options-line-width=120 --check",
+    "fmt:fix": "deno fmt --options-single-quote --options-line-width=120"
+  },
+  "lock": false
+}
