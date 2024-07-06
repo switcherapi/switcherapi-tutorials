@@ -1,6 +1,7 @@
 import { assertEquals } from 'jsr:@std/assert';
+
 import { checkSwitcher, setupSdk } from './main.ts';
-import { Client } from 'jsr:@switcherapi/switcher-client-deno@2.0.1';
+import { Client } from './deps.ts';
 
 Deno.test({
   name: 'it should check switcher',

@@ -1,10 +1,4 @@
-import { dirname, fromFileUrl } from 'jsr:@std/path';
-import {
-  Client,
-  ResultDetail,
-  type SwitcherContext,
-  type SwitcherOptions,
-} from 'jsr:@switcherapi/switcher-client-deno@2.0.1';
+import { Client, dirname, fromFileUrl, type ResultDetail, type SwitcherContext, type SwitcherOptions } from './deps.ts';
 
 export async function setupSdk() {
   const context: SwitcherContext = {
