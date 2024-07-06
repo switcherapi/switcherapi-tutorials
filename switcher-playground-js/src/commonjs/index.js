@@ -10,7 +10,7 @@ async function setupSdk() {
         component: 'switcher-playground'
     }, {
         logger: true,
-        local: false,
+        local: true,
         snapshotLocation: './snapshot'
     });
 

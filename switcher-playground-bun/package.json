@@ -12,6 +12,6 @@
   },
   "type": "module",
   "dependencies": {
-    "switcher-client": "^4.1.0"
+    "switcher-client": "^4.1.1"
   }
 }
