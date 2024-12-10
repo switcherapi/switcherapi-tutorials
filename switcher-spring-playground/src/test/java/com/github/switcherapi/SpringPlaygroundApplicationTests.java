@@ -1,6 +1,8 @@
 package com.github.switcherapi;
 
+import com.github.switcherapi.client.model.StrategyValidator;
 import com.github.switcherapi.client.test.SwitcherTest;
+import com.github.switcherapi.client.test.SwitcherTestWhen;
 import com.github.switcherapi.config.Features;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -34,6 +36,24 @@ class SpringPlaygroundApplicationTests {
 			.andDo(print())
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("true")));
+	}
+
+	@SwitcherTest(key = Features.MY_SWITCHER,
+			when = @SwitcherTestWhen(input = "valid", strategy = StrategyValidator.VALUE))
+	void shouldReturnTrueGivenValidEntryCriteria() throws Exception {
+		this.mockMvc.perform(get("/api/check?input=valid"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().string(containsString("true")));
+	}
+
+	@SwitcherTest(key = Features.MY_SWITCHER,
+			when = @SwitcherTestWhen(input = "valid", strategy = StrategyValidator.VALUE))
+	void shouldReturnFalseGivenInvalidEntryCriteria() throws Exception {
+		this.mockMvc.perform(get("/api/check?input=invalid"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().string(containsString("false")));
 	}
 
 }

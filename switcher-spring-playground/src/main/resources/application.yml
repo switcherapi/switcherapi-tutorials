@@ -7,16 +7,16 @@ logging:
       org.springframework.web: INFO
 
 switcher:
+   contextLocation: com.github.switcherapi.config.Features
    url: https://api.switcherapi.com
-   apikey: JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT
+   apikey: ${SWITCHER_APIKEY}
    component: switcher-playground
    domain: Playground
 
    # optional
    local: ${LOCAL:true}
    snapshot:
-      location: ./src/main/resources/snapshots/
+      location: /snapshots
       auto: ${SNAPSHOT_AUTO:true}
       updateInterval: 5s
-   silent: 
-   retry: 
+   silent: 1m
