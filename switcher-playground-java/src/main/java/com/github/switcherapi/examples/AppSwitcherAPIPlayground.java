@@ -1,6 +1,5 @@
 package com.github.switcherapi.examples;
 
-import com.github.switcherapi.client.ContextBuilder;
 import com.github.switcherapi.client.SwitcherContextBase;
 import com.github.switcherapi.client.SwitcherKey;
 
@@ -13,24 +12,22 @@ import java.util.concurrent.TimeUnit;
  */
 public class AppSwitcherAPIPlayground extends SwitcherContextBase {
 
+    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
     @SwitcherKey
     public static final String MY_SWITCHER = "MY_SWITCHER";
 
-    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    @Override
+    protected void configureClient() {
+        configureClient("switcherapi");
+    }
 
     public static void main(String[] args) {
-        configure(ContextBuilder.builder()
-                .contextLocation(AppSwitcherAPIPlayground.class.getName())
-                .url("https://api.switcherapi.com")
-                .domain("Playground")
-                .component("switcher-playground")
-                .apiKey("JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT")
-        );
-
-        initializeClient();
+        new AppSwitcherAPIPlayground().configureClient();
         var switcher = getSwitcher(MY_SWITCHER);
 
-        scheduler.scheduleAtFixedRate(() ->
-                System.out.println("Boolean variation is " + switcher.isItOn()), 0, 10, TimeUnit.SECONDS);
+        checkSwitchers();
+
+        scheduler.scheduleAtFixedRate(switcher::isItOn, 0, 10, TimeUnit.SECONDS);
     }
 }

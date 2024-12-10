@@ -1,7 +1,7 @@
 package com.github.switcherapi;
 
-import com.github.switcherapi.client.SwitcherExecutor;
 import com.github.switcherapi.client.exception.SwitcherException;
+import com.github.switcherapi.client.test.SwitcherBypass;
 import com.github.switcherapi.client.test.SwitcherTest;
 import com.github.switcherapi.examples.AppPlayground;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,9 +26,9 @@ class AppPlaygroundTest {
 	
 	@Test
 	void testMyFeatureNotUsingParameter() {
-		SwitcherExecutor.assume(MY_SWITCHER, true);
+		SwitcherBypass.assume(MY_SWITCHER, true);
 		assertTrue(playground.myFeature());
-		SwitcherExecutor.forget(MY_SWITCHER);
+		SwitcherBypass.forget(MY_SWITCHER);
 		assertFalse(playground.myFeature());
 	}
 	

@@ -27,7 +27,7 @@ public class AppPlaygroundSnapshotWatch {
 
 	public static void main(String[] args) {
 		configure(ContextBuilder.builder()
-				.contextLocation(PlaygroundBaseFeatures.class.getName())
+				.context(PlaygroundBaseFeatures.class.getName())
 				.snapshotLocation("./src/main/resources/snapshots")
 				.local(true));
 		
