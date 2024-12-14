@@ -1,9 +1,19 @@
-import { Client, dirname, fromFileUrl, type ResultDetail, type SwitcherContext, type SwitcherOptions } from './deps.ts';
+import {
+  Client,
+  dirname,
+  fromFileUrl,
+  load,
+  type ResultDetail,
+  type SwitcherContext,
+  type SwitcherOptions
+} from './deps.ts';
+
+await load({ export: true, envPath: '.env' });
 
 export async function setupSdk() {
   const context: SwitcherContext = {
     url: 'https://api.switcherapi.com',
-    apiKey: 'JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT',
+    apiKey: Deno.env.get('SWITCHER_API_KEY') || '',
     domain: 'Playground',
     component: 'switcher-playground',
   };
@@ -22,6 +32,7 @@ export async function setupSdk() {
 
 export function checkSwitcher() {
   const switcher = Client.getSwitcher('MY_SWITCHER')
+    .checkValue('user_1')
     .detail()
     .throttle(1000)
     .defaultResult(true);
