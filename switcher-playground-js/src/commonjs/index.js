@@ -5,7 +5,7 @@ async function setupSdk() {
 
     Client.buildContext({
         url: 'https://api.switcherapi.com',
-        apiKey: 'JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT',
+        apiKey: '[API_KEY]',
         domain: 'Playground',
         component: 'switcher-playground'
     }, {
@@ -21,16 +21,17 @@ async function setupSdk() {
     });
 }
 
+async function logCall(isItOn) {
+    const time = Date.now();
+    const result = await isItOn();
+    console.log(`- ${Date.now() - time} ms - ${JSON.stringify(result)}`);
+}
+
 async function run() {
     const { Client } = await loadModule();
+    const switcher = Client.getSwitcher().detail();
     
-    const switcher = Client.getSwitcher();
-    
-    setInterval(async () => {
-        const time = Date.now();
-        const result = await switcher.detail().isItOn('MY_SWITCHER');
-        console.log(`- ${Date.now() - time} ms - ${JSON.stringify(result)}`);
-    }, 1000);
+    setInterval(() => logCall(async () => switcher.isItOn('MY_SWITCHER')), 1000);
 }
 
 setupSdk();

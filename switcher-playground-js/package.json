@@ -10,6 +10,6 @@
   "author": "Roger Floriano (petruki)",
   "license": "MIT",
   "dependencies": {
-    "switcher-client": "^4.1.1"
+    "switcher-client": "^4.2.0"
   }
 }

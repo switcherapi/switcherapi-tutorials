@@ -3,7 +3,7 @@ import { Client } from 'switcher-client';
 function setupSdk() {
     Client.buildContext({
         url: 'https://api.switcherapi.com',
-        apiKey: 'JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT',
+        apiKey: '[API_KEY]',
         domain: 'Playground',
         component: 'switcher-playground'
     }, {
@@ -19,14 +19,16 @@ function setupSdk() {
     });
 }
 
-async function run() {
-    const switcher = Client.getSwitcher();
+async function logCall(isItOn) {
+    const time = Date.now();
+    const result = await isItOn();
+    console.log(`- ${Date.now() - time} ms - ${JSON.stringify(result)}`);
+}
 
-    setInterval(async () => {
-        const time = Date.now();
-        const result = await switcher.detail().isItOn('MY_SWITCHER');
-        console.log(`- ${Date.now() - time} ms - ${JSON.stringify(result)}`);
-    }, 1000);
+async function run() {
+    const switcher = Client.getSwitcher().detail();
+
+    setInterval(() => logCall(async () => switcher.isItOn('MY_SWITCHER')), 1000);
 }
 
 setupSdk();
