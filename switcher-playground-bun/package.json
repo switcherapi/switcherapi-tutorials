@@ -5,13 +5,13 @@
     "@types/bun": "latest"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.7.2"
   },
   "scripts": {
     "play": "bun run index.ts"
   },
   "type": "module",
   "dependencies": {
-    "switcher-client": "^4.1.1"
+    "switcher-client": "^4.2.0"
   }
 }

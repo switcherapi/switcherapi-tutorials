@@ -1,19 +1,24 @@
-import { Client, type SwitcherContext, type SwitcherOptions } from 'switcher-client';
+import { 
+    Client, 
+    type SwitcherContext, 
+    type SwitcherOptions, 
+    type ResultDetail 
+} from 'switcher-client';
 
 async function setupSdk() {
     const context: SwitcherContext = {
         url: 'https://api.switcherapi.com',
-        apiKey: 'JDJiJDA4JEFweTZjSTR2bE9pUjNJOUYvRy9raC4vRS80Q2tzUnk1d3o1aXFmS2o5eWJmVW11cjR0ODNT',
+        apiKey: '[API_KEY]',
         domain: 'Playground',
         component: 'switcher-playground',
     };
-    
+
     const options: SwitcherOptions = {
         regexSafe: false, // false required (Bun cannot handle child process) 
         local: true,
         snapshotLocation: './snapshot',
     };
-    
+
     Client.buildContext(context, options);
     Client.watchSnapshot({
         success: () => console.log('Snapshot updated!'),
@@ -23,16 +28,20 @@ async function setupSdk() {
     await Client.loadSnapshot().then(() => console.log('Snapshot loaded!'));
 }
 
+async function logCall(isItOn: () => Promise<boolean | ResultDetail>) {
+    const time = Date.now();
+    const result = await isItOn();
+    console.log(`- ${Date.now() - time} ms - ${JSON.stringify(result)}`);
+}
+
 async function run() {
     await setupSdk();
 
-    const switcher = Client.getSwitcher().detail().defaultResult(false);
+    const switcher = Client.getSwitcher()
+        .detail()
+        .defaultResult(false);
 
-    setInterval(async () => {
-        const time = Date.now();
-        const result = await switcher.isItOn('MY_SWITCHER');
-        console.log(`- ${Date.now() - time} ms - ${JSON.stringify(result)}`);
-    }, 1000);
+    setInterval(() => logCall(async () => switcher.isItOn('MY_SWITCHER')), 1000);
 }
 
 run();
