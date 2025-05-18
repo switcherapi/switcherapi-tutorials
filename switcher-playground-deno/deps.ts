@@ -1,5 +1,5 @@
-export { dirname, fromFileUrl } from 'jsr:@std/path@1.0.8';
-export { load } from 'jsr:@std/dotenv@0.225.3';
+export { dirname, fromFileUrl } from 'jsr:@std/path@1.0.9';
+export { load } from 'jsr:@std/dotenv@0.225.4';
 export {
   Client,
   type ResultDetail,

@@ -13,9 +13,9 @@ await load({ export: true, envPath: '.env' });
 export async function setupSdk() {
   const context: SwitcherContext = {
     url: 'https://api.switcherapi.com',
-    apiKey: Deno.env.get('SWITCHER_API_KEY') || '',
-    domain: 'Playground',
-    component: 'switcher-playground',
+    apiKey: Deno.env.get('SWITCHER_API_KEY') ?? '',
+    domain: 'Switcher API',
+    component: 'switcher4deno',
   };
 
   const scriptDir = dirname(fromFileUrl(new URL(import.meta.url)));
@@ -31,7 +31,7 @@ export async function setupSdk() {
 }
 
 export function checkSwitcher() {
-  const switcher = Client.getSwitcher('MY_SWITCHER')
+  const switcher = Client.getSwitcher('CLIENT_DENO_FEATURE')
     .checkValue('user_1')
     .detail()
     .throttle(1000)

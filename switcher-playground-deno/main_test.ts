@@ -23,7 +23,7 @@ Deno.test({
   async fn() {
     // given
     await setupSdk();
-    Client.assume('MY_SWITCHER').false();
+    Client.assume('CLIENT_DENO_FEATURE').false();
 
     // test
     const switcher = await checkSwitcher();
@@ -31,6 +31,6 @@ Deno.test({
 
     // teardown snapshot watcher
     Client.unloadSnapshot();
-    Client.forget('MY_SWITCHER');
+    Client.forget('CLIENT_DENO_FEATURE');
   },
 });

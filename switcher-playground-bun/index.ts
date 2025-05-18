@@ -9,8 +9,8 @@ async function setupSdk() {
     const context: SwitcherContext = {
         url: 'https://api.switcherapi.com',
         apiKey: '[API_KEY]',
-        domain: 'Playground',
-        component: 'switcher-playground',
+        domain: 'Switcher API',
+        component: 'switcher-client-js',
     };
 
     const options: SwitcherOptions = {
@@ -41,7 +41,7 @@ async function run() {
         .detail()
         .defaultResult(false);
 
-    setInterval(() => logCall(async () => switcher.isItOn('MY_SWITCHER')), 1000);
+    setInterval(() => logCall(async () => switcher.isItOn('CLIENT_JS_FEATURE')), 1000);
 }
 
 run();
