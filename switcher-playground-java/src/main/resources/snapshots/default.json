@@ -3,35 +3,35 @@
     "domain": {
       "name": "Playground",
       "version": 1618553265677,
+      "description": "My playground",
+      "activated": true,
       "group": [
         {
           "name": "Release 1",
+          "description": "Showcase configuration structure",
+          "activated": true,
           "config": [
             {
               "key": "MY_SWITCHER",
+              "description": "My first switcher",
+              "activated": false,
               "strategies": [
                 {
                   "strategy": "VALUE_VALIDATION",
+                  "activated": false,
                   "operation": "EXIST",
                   "values": [
                     "user_1"
-                  ],
-                  "activated": false
+                  ]
                 }
               ],
               "components": [
                 "switcher-playground"
-              ],
-              "description": "My first switcher",
-              "activated": false
+              ]
             }
-          ],
-          "description": "Showcase configuration structure",
-          "activated": true
+          ]
         }
-      ],
-      "description": "My playground",
-      "activated": true
+      ]
     }
   }
 }
