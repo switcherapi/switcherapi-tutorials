@@ -5,13 +5,15 @@
     "@types/bun": "latest"
   },
   "peerDependencies": {
-    "typescript": "^5.7.2"
+    "typescript": "^5.8.3"
   },
   "scripts": {
-    "play": "bun run index.ts"
+    "play:local": "bun run src/local.ts",
+    "play:hybrid": "bun run src/hybrid.ts",
+    "play:remote": "bun run src/remote.ts"
   },
   "type": "module",
   "dependencies": {
-    "switcher-client": "^4.2.0"
+    "switcher-client": "^4.4.0"
   }
 }
