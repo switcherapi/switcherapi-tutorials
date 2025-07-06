@@ -1,55 +1,44 @@
-import {
-  Client,
-  dirname,
-  fromFileUrl,
-  load,
-  type ResultDetail,
-  type SwitcherContext,
-  type SwitcherOptions
-} from './deps.ts';
+import { Client, load } from './deps.ts';
 
 await load({ export: true, envPath: '.env' });
 
 export async function setupSdk() {
-  const context: SwitcherContext = {
+  Client.buildContext({
     url: 'https://api.switcherapi.com',
-    apiKey: Deno.env.get('SWITCHER_API_KEY') ?? '',
+    apiKey: Deno.env.get('SWITCHER_API_KEY'),
     domain: 'Switcher API',
     component: 'switcher4deno',
-  };
-
-  const scriptDir = dirname(fromFileUrl(new URL(import.meta.url)));
-  const snapshotLocation = `${scriptDir}/snapshot`;
-
-  const options: SwitcherOptions = {
+  }, {
     local: true,
-    snapshotLocation,
-  };
+    snapshotLocation: './snapshot',
+  });
 
-  Client.buildContext(context, options);
-  await Client.loadSnapshot({ watchSnapshot: true }).then(() => console.log('Snapshot loaded!'));
+  await Client.loadSnapshot().then(() => {
+    console.log('Snapshot loaded!');
+    Client.watchSnapshot({
+      success: () => console.log('In-memory snapshot updated', Client.snapshotVersion),
+      reject: (err: Error) => console.log(err),
+    });
+  });
 }
 
-export function checkSwitcher() {
-  const switcher = Client.getSwitcher('CLIENT_DENO_FEATURE')
-    .checkValue('user_1')
-    .detail()
-    .throttle(1000)
-    .defaultResult(true);
+export function checkSwitcher(key: string, value = '') {
+  const switcher = Client.getSwitcher()
+    .checkValue(value);
 
-  return switcher.isItOn() as Promise<ResultDetail>;
+  return switcher.isItOnDetail(key);
 }
 
-export function run() {
-  setInterval(async () => {
+export async function run() {
+  await setupSdk();
+
+  setInterval(() => {
     const time = Date.now();
-    const result = await checkSwitcher();
-    console.clear();
+    const result = checkSwitcher('CLIENT_DENO_FEATURE', 'user_1');
     console.log(`- ${Date.now() - time} ms - ${JSON.stringify(result)}`);
   }, 1000);
 }
 
 if (import.meta.main) {
-  await setupSdk();
   run();
 }
