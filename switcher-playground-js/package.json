@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "commonjs": "node src/commonjs/index.js",
-    "es6": "node src/es6/index.mjs"
+    "es6:local": "node src/es6/local.mjs",
+    "es6:hybrid": "node src/es6/hybrid.mjs",
+    "es6:remote": "node src/es6/remote.mjs"
   },
   "author": "Roger Floriano (petruki)",
   "license": "MIT",
   "dependencies": {
-    "switcher-client": "^4.2.0"
+    "dotenv": "^17.0.1",
+    "switcher-client": "^4.4.0"
   }
 }
