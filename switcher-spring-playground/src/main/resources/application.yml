@@ -15,8 +15,10 @@ switcher:
 
    # optional
    local: ${LOCAL:true}
+   check: true
    snapshot:
-      location: /snapshots
+      location: ./src/main/resources/snapshots
       auto: ${SNAPSHOT_AUTO:true}
+      watcher: true
       updateInterval: 5s
    silent: 1m

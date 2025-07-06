@@ -1,0 +1,8 @@
+switcher:
+   contextLocation: com.github.switcherapi.config.Features
+   domain: Playground
+
+   # optional
+   local: true
+   snapshot:
+      location: /snapshots

@@ -15,7 +15,5 @@ public class Features extends SwitcherContextBase {
 	@Override
 	protected void configureClient() {
 		super.configureClient();
-		checkSwitchers();
-		watchSnapshot();
 	}
 }

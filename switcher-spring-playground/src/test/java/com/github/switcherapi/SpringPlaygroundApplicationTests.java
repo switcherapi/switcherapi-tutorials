@@ -56,4 +56,14 @@ class SpringPlaygroundApplicationTests {
 				.andExpect(content().string(containsString("false")));
 	}
 
+	@SwitcherTest(key = Features.MY_SWITCHER)
+	void shouldReturnSwitcherResult() throws Exception {
+		this.mockMvc.perform(get("/api/submit"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().string(containsString("\"switcherKey\":\"MY_SWITCHER\"")))
+				.andExpect(content().string(containsString("\"reason\":\"Switcher bypassed\"")))
+				.andExpect(content().string(containsString("\"itOn\":true")));
+	}
+
 }
