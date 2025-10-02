@@ -5,7 +5,7 @@
     "@types/bun": "latest"
   },
   "peerDependencies": {
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   },
   "scripts": {
     "play:local": "bun run src/local.ts",
@@ -14,6 +14,6 @@
   },
   "type": "module",
   "dependencies": {
-    "switcher-client": "^4.4.0"
+    "switcher-client": "^4.4.1"
   }
 }
