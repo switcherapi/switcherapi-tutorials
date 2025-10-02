@@ -12,7 +12,7 @@
   "author": "Roger Floriano (petruki)",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^17.0.1",
-    "switcher-client": "^4.4.0"
+    "dotenv": "^17.2.3",
+    "switcher-client": "^4.4.1"
   }
 }
