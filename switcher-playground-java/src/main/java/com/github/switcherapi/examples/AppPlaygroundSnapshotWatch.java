@@ -1,9 +1,9 @@
 package com.github.switcherapi.examples;
 
 import com.github.switcherapi.PlaygroundBaseFeatures;
-import com.github.switcherapi.client.ContextBuilder;
-import com.github.switcherapi.client.exception.SwitcherException;
-import com.github.switcherapi.client.utils.SnapshotEventHandler;
+import com.switcherapi.client.ContextBuilder;
+import com.switcherapi.client.exception.SwitcherException;
+import com.switcherapi.client.utils.SnapshotEventHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,7 +25,7 @@ public class AppPlaygroundSnapshotWatch {
 
 	private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
-	public static void main(String[] args) {
+	static void main(String[] args) {
 		configure(ContextBuilder.builder()
 				.context(PlaygroundBaseFeatures.class.getName())
 				.snapshotLocation("./src/main/resources/snapshots")

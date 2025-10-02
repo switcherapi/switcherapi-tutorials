@@ -1,8 +1,8 @@
 package com.github.switcherapi;
 
-import com.github.switcherapi.client.exception.SwitcherException;
-import com.github.switcherapi.client.test.SwitcherBypass;
-import com.github.switcherapi.client.test.SwitcherTest;
+import com.switcherapi.client.exception.SwitcherException;
+import com.switcherapi.client.test.SwitcherBypass;
+import com.switcherapi.client.test.SwitcherTest;
 import com.github.switcherapi.examples.AppPlayground;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

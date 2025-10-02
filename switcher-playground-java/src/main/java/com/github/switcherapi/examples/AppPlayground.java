@@ -4,14 +4,14 @@ import static com.github.switcherapi.PlaygroundFeatures.*;
 
 /**
  * This example uses ${@link com.github.switcherapi.PlaygroundFeatures} class,
- * which inherits from ${@link com.github.switcherapi.client.SwitcherContext}.
+ * which inherits from ${@link com.switcherapi.client.SwitcherContext}.
  * <p>
  * When we use SwitcherContext, all SDK settings are automatically loaded from switcherapi.properties file.
  * This option is perfect for clean code and fast development without introducing extra code.
  */
 public class AppPlayground {
 
-	public static void main(String[] args) {
+	static void main(String[] args) {
 		final AppPlayground app = new AppPlayground();
 
 		System.out.println("With strategy entry: " + app.myFeatureParams("user_1"));

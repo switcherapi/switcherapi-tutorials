@@ -1,7 +1,7 @@
 package com.github.switcherapi;
 
-import com.github.switcherapi.client.SwitcherContextBase;
-import com.github.switcherapi.client.SwitcherKey;
+import com.switcherapi.client.SwitcherContextBase;
+import com.switcherapi.client.SwitcherKey;
 
 public class PlaygroundBaseFeatures extends SwitcherContextBase {
 	

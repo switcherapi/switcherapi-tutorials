@@ -1,7 +1,7 @@
 package com.github.switcherapi.examples;
 
-import com.github.switcherapi.client.SwitcherContextBase;
-import com.github.switcherapi.client.SwitcherKey;
+import com.switcherapi.client.SwitcherContextBase;
+import com.switcherapi.client.SwitcherKey;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -22,7 +22,7 @@ public class AppSwitcherAPIPlayground extends SwitcherContextBase {
         configureClient("switcherapi");
     }
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         new AppSwitcherAPIPlayground().configureClient();
         var switcher = getSwitcher(MY_SWITCHER);
 
