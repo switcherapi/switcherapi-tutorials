@@ -1,7 +1,5 @@
-import { assertEquals } from 'jsr:@std/assert';
-
 import { checkSwitcher, setupSdk } from './main.ts';
-import { Client, dirname, fromFileUrl } from './deps.ts';
+import { assertEquals, Client, dirname, fromFileUrl } from './deps.ts';
 
 const testBody = (fn: (t: Deno.TestContext) => void | Promise<void>) => {
   return async (t: Deno.TestContext) => {
