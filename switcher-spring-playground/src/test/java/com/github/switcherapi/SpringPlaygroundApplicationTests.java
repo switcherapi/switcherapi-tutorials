@@ -1,8 +1,8 @@
 package com.github.switcherapi;
 
-import com.github.switcherapi.client.model.StrategyValidator;
-import com.github.switcherapi.client.test.SwitcherTest;
-import com.github.switcherapi.client.test.SwitcherTestWhen;
+import com.switcherapi.client.model.StrategyValidator;
+import com.switcherapi.client.test.SwitcherTest;
+import com.switcherapi.client.test.SwitcherTestWhen;
 import com.github.switcherapi.config.Features;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

@@ -1,7 +1,7 @@
 package com.github.switcherapi.config;
 
-import com.github.switcherapi.client.SwitcherContextBase;
-import com.github.switcherapi.client.SwitcherKey;
+import com.switcherapi.client.SwitcherContextBase;
+import com.switcherapi.client.SwitcherKey;
 import jakarta.annotation.PostConstruct;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

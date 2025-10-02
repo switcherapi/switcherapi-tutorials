@@ -1,6 +1,6 @@
 package com.github.switcherapi;
 
-import com.github.switcherapi.client.model.SwitcherResult;
+import com.switcherapi.client.model.SwitcherResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
