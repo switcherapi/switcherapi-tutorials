@@ -9,4 +9,4 @@ export {
   type SwitcherContext,
   type SwitcherOptions,
   SwitcherResult,
-} from 'jsr:@switcherapi/switcher-client-deno@2.3.1';
+} from 'jsr:@switcherapi/switcher-client-deno@2.4.0';
