@@ -3,7 +3,7 @@ server:
 
 logging:
    level:
-      com.github.switcherapi.client: DEBUG
+      com.switcherapi.client: DEBUG
       org.springframework.web: INFO
 
 switcher:

@@ -1,85 +1,84 @@
 {
-  "data": {
-    "domain": {
-      "name": "Playground",
-      "description": "My playground",
-      "activated": true,
-      "version": 1749974519537,
-      "group": [
-        {
-          "name": "Experimental",
-          "description": "Open feature flags for experimentation",
-          "activated": true,
-          "config": [
-            {
-              "key": "MY_SWITCHER",
-              "description": "My first switcher",
-              "activated": true,
-              "strategies": [
-                {
-                  "strategy": "VALUE_VALIDATION",
-                  "operation": "EXIST",
-                  "activated": true,
-                  "values": [
-                    "user_1"
-                  ]
-                }
-              ],
-              "components": [
-                "switcher-playground",
-                "benchmark"
-              ]
-            },
-            {
-              "key": "MY_SWITCHER_V2",
-              "description": "",
-              "activated": true,
-              "strategies": [
-                {
-                  "strategy": "VALUE_VALIDATION",
-                  "operation": "EXIST",
-                  "activated": false,
-                  "values": [
-                    "test"
-                  ]
-                },
-                {
-                  "strategy": "NUMERIC_VALIDATION",
-                  "operation": "EXIST",
-                  "activated": false,
-                  "values": [
-                    "1",
-                    "2"
-                  ]
-                }
-              ],
-              "relay": {
-                "type": "VALIDATION",
-                "activated": false
+  "domain": {
+    "name": "Playground",
+    "description": "My playground",
+    "activated": true,
+    "version": 1760251405249,
+    "group": [
+      {
+        "name": "Experimental",
+        "description": "Open feature flags for experimentation",
+        "activated": true,
+        "config": [
+          {
+            "key": "MY_SWITCHER",
+            "description": "My first switcher",
+            "activated": true,
+            "strategies": [
+              {
+                "strategy": "VALUE_VALIDATION",
+                "operation": "EXIST",
+                "activated": true,
+                "values": [
+                  "user_1"
+                ]
+              }
+            ],
+            "components": [
+              "switcher-playground",
+              "benchmark"
+            ]
+          },
+          {
+            "key": "MY_SWITCHER_V2",
+            "description": "",
+            "activated": true,
+            "strategies": [
+              {
+                "strategy": "VALUE_VALIDATION",
+                "operation": "EXIST",
+                "activated": false,
+                "values": [
+                  "test"
+                ]
               },
-              "components": [
-                "switcher-playground"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Client SDK",
-          "description": "Used for integrated and other smoke tests",
-          "activated": true,
-          "config": [
-            {
-              "key": "CLIENT_JS_FEATURE_1",
-              "description": "switcher-client-js:\nUsed for integrated test (moved to Switcher API domain)",
-              "activated": true,
-              "strategies": [],
-              "components": [
-                "switcher-playground"
-              ]
-            }
-          ]
-        }
-      ]
-    }
+              {
+                "strategy": "NUMERIC_VALIDATION",
+                "operation": "EXIST",
+                "activated": false,
+                "values": [
+                  "1",
+                  "2"
+                ]
+              }
+            ],
+            "relay": {
+              "type": "VALIDATION",
+              "activated": false
+            },
+            "components": [
+              "switcher-playground",
+              "benchmark"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Client SDK",
+        "description": "Used for integrated and other smoke tests",
+        "activated": true,
+        "config": [
+          {
+            "key": "CLIENT_JS_FEATURE_1",
+            "description": "switcher-client-js:\nUsed for integrated test (moved to Switcher API domain)",
+            "activated": true,
+            "strategies": [],
+            "components": [
+              "switcher-playground"
+            ]
+          }
+        ]
+      }
+    ]
   }
 }
