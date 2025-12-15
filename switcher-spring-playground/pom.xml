@@ -17,7 +17,7 @@
 	
 	<properties>
 		<java.version>25</java.version>
-		<switcher-client.version>2.5.1</switcher-client.version>
+		<switcher-client.version>2.5.2</switcher-client.version>
 	</properties>
 	
 	<dependencies>
