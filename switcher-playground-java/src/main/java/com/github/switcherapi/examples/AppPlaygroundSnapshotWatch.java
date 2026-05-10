@@ -25,7 +25,7 @@ public class AppPlaygroundSnapshotWatch {
 
 	private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
-	static void main(String[] args) {
+	static void main() {
 		configure(ContextBuilder.builder()
 				.context(PlaygroundBaseFeatures.class.getName())
 				.snapshotLocation("./src/main/resources/snapshots")
@@ -44,7 +44,8 @@ public class AppPlaygroundSnapshotWatch {
 			}
 		});
 
-		scheduler.scheduleAtFixedRate(() -> getSwitcher(MY_SWITCHER).isItOn(), 0, 5, TimeUnit.SECONDS);
+		scheduler.scheduleAtFixedRate(() ->
+				logger.info(getSwitcher(MY_SWITCHER).isItOn()), 0, 5, TimeUnit.SECONDS);
 	}
 
 }

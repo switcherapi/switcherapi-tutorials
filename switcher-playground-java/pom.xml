@@ -14,11 +14,15 @@
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 
-		<switcher-client.version>2.4.1</switcher-client.version>
-		<junit.version>5.14.0</junit.version>
-		<maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
-		<log4j.version>2.25.2</log4j.version>
+		<switcher-client.version>2.5.2</switcher-client.version>
+		<log4j.version>2.26.0</log4j.version>
 		<slf4j-api.version>2.0.17</slf4j-api.version>
+
+        <!-- test -->
+        <junit.version>6.0.3</junit.version>
+
+        <!-- plugins -->
+        <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
 	</properties>
 
 	<dependencies>

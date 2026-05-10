@@ -2,6 +2,8 @@ package com.github.switcherapi.examples;
 
 import com.github.switcherapi.PlaygroundBaseFeatures;
 import com.switcherapi.client.ContextBuilder;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static com.github.switcherapi.PlaygroundBaseFeatures.*;
 
@@ -14,14 +16,16 @@ import static com.github.switcherapi.PlaygroundBaseFeatures.*;
  */
 public class AppPlaygroundContextBase {
 
-	static void main(String[] args) {
+	private static final Logger logger = LogManager.getLogger(AppPlaygroundContextBase.class);
+
+	static void main() {
 		configure(ContextBuilder.builder()
 				.context(PlaygroundBaseFeatures.class.getName())
 				.snapshotLocation("./src/main/resources/snapshots")
 				.local(true));
 		
 		initializeClient();
-		getSwitcher(MY_SWITCHER).isItOn();
+		logger.info("Switcher {} is {} for user_1", MY_SWITCHER, getSwitcher(MY_SWITCHER).isItOn());
 	}
 
 }

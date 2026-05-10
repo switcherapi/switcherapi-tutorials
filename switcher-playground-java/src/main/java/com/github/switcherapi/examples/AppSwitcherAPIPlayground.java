@@ -1,5 +1,6 @@
 package com.github.switcherapi.examples;
 
+import com.switcherapi.client.ContextBuilder;
 import com.switcherapi.client.SwitcherContextBase;
 import com.switcherapi.client.SwitcherKey;
 
@@ -17,17 +18,16 @@ public class AppSwitcherAPIPlayground extends SwitcherContextBase {
     @SwitcherKey
     public static final String MY_SWITCHER = "MY_SWITCHER";
 
-    @Override
-    protected void configureClient() {
-        configureClient("switcherapi");
-    }
+    static void main() {
+		configure(ContextBuilder.builder()
+				.context(AppSwitcherAPIPlayground.class.getName())
+				.local(true)
+				.snapshotLocation("./src/main/resources/snapshots"));
 
-    static void main(String[] args) {
-        new AppSwitcherAPIPlayground().configureClient();
+		initializeClient();
+		checkSwitchers();
+
         var switcher = getSwitcher(MY_SWITCHER);
-
-        checkSwitchers();
-
         scheduler.scheduleAtFixedRate(switcher::isItOn, 0, 10, TimeUnit.SECONDS);
     }
 }

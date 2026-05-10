@@ -1,5 +1,8 @@
 package com.github.switcherapi.examples;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import static com.github.switcherapi.PlaygroundFeatures.*;
 
 /**
@@ -11,11 +14,14 @@ import static com.github.switcherapi.PlaygroundFeatures.*;
  */
 public class AppPlayground {
 
-	static void main(String[] args) {
+	private static final Logger logger = LogManager.getLogger(AppPlayground.class);
+
+	static void main() {
 		final AppPlayground app = new AppPlayground();
 
-		System.out.println("With strategy entry: " + app.myFeatureParams("user_1"));
-		System.out.println("No strategy entry: " + app.myFeature());
+		logger.info("Switcher {} is {} for user_1", MY_SWITCHER, app.myFeatureParams("user_1"));
+		logger.info("Switcher {} is {} for user_0", MY_SWITCHER, app.myFeatureParams("user_0"));
+		logger.info("Switcher {} is {} without params", MY_SWITCHER, app.myFeature());
 	}
 	
 	public boolean myFeature() {
