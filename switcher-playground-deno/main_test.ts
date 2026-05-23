@@ -1,4 +1,4 @@
-import { checkSwitcher, setupSdk } from './main.ts';
+import { checkSwitcher, setupSdk } from './main_local.ts';
 import { assertEquals, Client, dirname, fromFileUrl } from './deps.ts';
 
 const testBody = (fn: (t: Deno.TestContext) => void | Promise<void>) => {
