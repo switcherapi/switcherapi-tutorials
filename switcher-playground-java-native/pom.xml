@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.github.switcherapi</groupId>
+	<artifactId>switcher-playground-java-native</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Switcher Playground Java Native SDK</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>21</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+
+		<maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
+		<native-image-plugin.version>1.1.0</native-image-plugin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.switcherapi</groupId>
+			<artifactId>switcher-client</artifactId>
+			<version>2.5.2</version>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+	        <profile>
+             <id>native</id>
+             <build>
+                 <plugins>
+                     <plugin>
+                         <groupId>org.graalvm.buildtools</groupId>
+                         <artifactId>native-maven-plugin</artifactId>
+                         <version>${native-image-plugin.version}</version>
+                        <configuration>
+                            <mainClass>com.github.switcherapi.examples.NativeSampleApp</mainClass>
+                        </configuration>
+                     </plugin>
+                 </plugins>
+             </build>
+        </profile>
+	</profiles>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+			</plugin>
+		</plugins>
+    </build>
+</project>

@@ -1,0 +1,12 @@
+services:
+  switcherapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: switcher-playground-java-native:latest
+    container_name: switcher-playground-java-native
+    environment:
+      - SWITCHER_API_KEY=${SWITCHER_API_KEY}
+      - LOCAL=true
+      - SNAPSHOT_LOCATION=/snapshots
+      - VALUE_PARAM=user_1
