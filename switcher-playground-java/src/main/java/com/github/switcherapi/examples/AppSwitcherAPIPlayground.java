@@ -22,10 +22,10 @@ public class AppSwitcherAPIPlayground extends SwitcherContextBase {
 		configure(ContextBuilder.builder()
 				.context(AppSwitcherAPIPlayground.class.getName())
 				.local(true)
+				.checkSwitchers(true)
 				.snapshotLocation("./src/main/resources/snapshots"));
 
 		initializeClient();
-		checkSwitchers();
 
         var switcher = getSwitcher(MY_SWITCHER);
         scheduler.scheduleAtFixedRate(switcher::isItOn, 0, 10, TimeUnit.SECONDS);

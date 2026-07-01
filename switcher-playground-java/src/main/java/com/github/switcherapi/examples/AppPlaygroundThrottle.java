@@ -3,7 +3,7 @@ package com.github.switcherapi.examples;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Random;
+import java.security.SecureRandom;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -28,7 +28,7 @@ public class AppPlaygroundThrottle {
 				.remote(true)
 				.throttle(1000);
 
-		var random = new Random();
+		var random = new SecureRandom();
 		scheduler.scheduleAtFixedRate(() -> {
 			var input = "user_1";
 			if (random.nextInt() % 2 == 0) {

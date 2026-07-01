@@ -4,7 +4,6 @@ import com.switcherapi.client.exception.SwitcherException;
 import com.switcherapi.client.test.SwitcherBypass;
 import com.switcherapi.client.test.SwitcherTest;
 import com.github.switcherapi.examples.AppPlayground;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.github.switcherapi.PlaygroundFeatures.MY_SWITCHER;
@@ -12,12 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AppPlaygroundTest {
 	
-	private AppPlayground playground;
-	
-	@BeforeEach
-	void setUp() {
-		playground = new AppPlayground();
-	}
+	private final AppPlayground playground = new AppPlayground();
 
 	@SwitcherTest(key = MY_SWITCHER)
 	void testMyFeatureUsingParameter() {
