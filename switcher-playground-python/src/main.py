@@ -11,16 +11,19 @@ from util import monitor_run
 
 load_dotenv()
 API_KEY = os.getenv('SWITCHER_API_KEY')
+SWITCHER_API_URL = os.getenv('SWITCHER_API_URL') or ""
+SWITCHER_API_DOMAIN = os.getenv('SWITCHER_API_DOMAIN') or ""
+SWITCHER_API_COMPONENT = os.getenv('SWITCHER_API_COMPONENT') or ""
 SWITCHER_KEY = 'CLIENT_PYTHON_FEATURE'
 LOOP = True
 
 def setup_sdk(options: ContextOptions = ContextOptions(), environment = "default"):
     """ Setup the global context for the Switcher client. """
     Client.build_context(
-        domain='Switcher API',
-        url='https://api.switcherapi.com',
+        domain=SWITCHER_API_DOMAIN,
+        url=SWITCHER_API_URL,
         api_key=API_KEY,
-        component='switcher-client-python',
+        component=SWITCHER_API_COMPONENT,
         environment=environment,
         options=options
     )
