@@ -1,4 +1,4 @@
-switcher-client==1.2.0
+switcher-client==1.2.1
 python-dotenv==1.2.2
 pytest==9.1.1
 pytest-xdist==3.8.0
